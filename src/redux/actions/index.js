@@ -2,9 +2,15 @@ export const ADD_EMAIL = 'ADD_EMAIL';
 export const ADD_WALLET = 'ADD_WALLET';
 export const RESQUEST_API = 'RESQUEST_API';
 export const SAVE_EXPENSES = 'SAVE_EXPENSES';
+export const ADD_BUTTON = 'ADD_BUTTON';
 
 export const saveExpenses = (payload) => ({
   type: SAVE_EXPENSES,
+  payload,
+});
+
+export const addBtn = (payload) => ({
+  type: ADD_BUTTON,
   payload,
 });
 

@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { addBtn } from '../redux/actions';
 
 class Table extends Component {
+  handleDelete = (key) => { // esse paramentro vai ser key do tr
+    const { expenses, dispatch } = this.props;
+    const erase = expenses.filter((element) => element.id !== key);
+    dispatch(addBtn(erase));
+  };
+
   render() {
     const { expenses } = this.props;
     return (
@@ -32,12 +39,17 @@ class Table extends Component {
               <td>
                 {Number(element.value * element.exchangeRates[element.currency].ask)
                   .toFixed(2)}
-
               </td>
               <td>Real</td>
               <td>
                 <button type="button">Editar</button>
-                <button type="button">Excluir</button>
+                <button
+                  type="button"
+                  onClick={ () => this.handleDelete(element.id) }
+                  data-testid="delete-btn"
+                >
+                  Excluir
+                </button>
               </td>
             </tr>
           ))}
@@ -49,6 +61,7 @@ class Table extends Component {
 
 Table.propTypes = {
   expenses: PropTypes.arrayOf.isRequired,
+  dispatch: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = ({ wallet }) => ({
