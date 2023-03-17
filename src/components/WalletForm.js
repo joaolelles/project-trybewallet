@@ -158,12 +158,12 @@ class WalletForm extends React.Component {
 }
 
 WalletForm.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-  currencies: PropTypes.arrayOf(PropTypes.string).isRequired,
-  expenses: PropTypes.arrayOf(PropTypes.string).isRequired,
-  idToEdit: PropTypes.number.isRequired,
-  editor: PropTypes.bool.isRequired,
-};
+  dispatch: PropTypes.func,
+  currencies: PropTypes.arrayOf(PropTypes.string),
+  expenses: PropTypes.arrayOf(PropTypes.string),
+  idToEdit: PropTypes.number,
+  editor: PropTypes.bool,
+}.isRequired;
 
 const mapStateToProps = ({ wallet }) => ({
   currencies: wallet.currencies,
